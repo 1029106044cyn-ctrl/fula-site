@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>服蜡 FULA | 手工蜡烛</title>
+  <meta name="description" content="服蜡 FULA 手工蜡烛品牌官网，温馨、简单、高级的香氛与礼盒体验。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@300;400;500;600&amp;display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f6efe8;
+      --paper: #fffaf5;
+      --ink: #2f241f;
+      --muted: #7d6c63;
+      --line: #e8d8cc;
+      --rose: #efc8cf;
+      --latte: #ead3be;
+      --charcoal: #1e1d20;
+      --cream: #fff7ef;
+      --shadow-soft: 0 18px 40px rgba(68, 38, 20, 0.08);
+      --shadow-card: 0 14px 32px rgba(64, 30, 16, 0.09);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(70rem 30rem at 85% -10%, #ffe7ef 0%, transparent 65%),
+        radial-gradient(60rem 22rem at -5% 25%, #f7e7db 0%, transparent 70%),
+        var(--bg);
+      font-family: "Noto Serif SC", serif;
+      line-height: 1.6;
+    }
+
+    .shell {
+      width: min(1120px, calc(100vw - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 14px;
+      z-index: 20;
+      margin: 20px auto 10px;
+      padding: 12px 18px;
+      border: 1px solid rgba(232, 216, 204, 0.7);
+      border-radius: 999px;
+      background: rgba(255, 250, 245, 0.82);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: var(--shadow-soft);
+      animation: rise .75s ease both;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid rgba(218, 196, 182, 0.85);
+      box-shadow: 0 6px 14px rgba(44, 32, 28, 0.12);
+    }
+
+    .brand-cn {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .brand-en {
+      font-size: 15px;
+      color: var(--muted);
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: 0.16em;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .hero {
+      margin: 28px 0 34px;
+      display: grid;
+      gap: 28px;
+      grid-template-columns: 1.1fr 1fr;
+      align-items: center;
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(48px, 7vw, 88px);
+      font-weight: 600;
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-copy h1 span {
+      display: block;
+      font-family: "Noto Serif SC", serif;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 500;
+      margin-top: 14px;
+      letter-spacing: 0.09em;
+    }
+
+    .hero-copy p {
+      margin: 20px 0 0;
+      max-width: 42ch;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .actions {
+      margin-top: 30px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 0;
+      padding: 11px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .btn.primary {
+      background: var(--charcoal);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(30, 29, 32, 0.24);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid #d3bdb0;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-visual {
+      border-radius: var(--radius-xl);
+      border: 1px solid #efdacb;
+      background: linear-gradient(140deg, #fff8f2 5%, #ffe8ef 45%, #f4e6db 100%);
+      box-shadow: var(--shadow-soft);
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: minmax(220px, 300px);
+      gap: 12px;
+      transform: rotate(-1.2deg);
+      animation: rise .9s .15s ease both;
+    }
+
+    .frame {
+      border-radius: 18px;
+      border: 1px solid rgba(210, 173, 155, 0.65);
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.52);
+      background: linear-gradient(180deg, #fff 0%, #fbeee4 100%);
+    }
+
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: -28% auto auto -24%;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(255,255,255,.95), transparent 70%);
+      transform: rotate(22deg);
+    }
+
+    .frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .tag {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.74);
+      color: #866b5e;
+      border: 1px solid rgba(220, 194, 178, 0.8);
+    }
+
+    section {
+      margin: 32px 0;
+      scroll-margin-top: 92px;
+    }
+
+    .section-head {
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 12px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 600;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 48ch;
+      font-size: 14px;
+    }
+
+    .cards {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      padding: 16px;
+      box-shadow: var(--shadow-card);
+      transition: transform .28s ease, box-shadow .28s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 42px rgba(63, 34, 24, 0.12);
+    }
+
+    .pill {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: #8a6e5f;
+      border: 1px solid #ecd2c3;
+      background: #fff;
+    }
+
+    .card h3 {
+      margin: 10px 0 7px;
+      font-size: 20px;
+      font-weight: 500;
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: 0.02em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .photo {
+      margin-top: 12px;
+      border-radius: 14px;
+      border: 1px dashed #e9d8ca;
+      height: 170px;
+      background:
+        radial-gradient(circle at 85% 18%, #ffeaf2 0%, transparent 40%),
+        radial-gradient(circle at 8% 100%, #f6e8dd 0%, transparent 45%),
+        linear-gradient(145deg, #fffdfb, #f8efe6);
+      display: block;
+      overflow: hidden;
+      color: #987d6f;
+      font-size: 13px;
+      text-align: center;
+      padding: 0;
+      line-height: 0;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      border-radius: 0;
+    }
+
+    .story {
+      border: 1px solid #e7d8cb;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(100deg, #fff9f3 0%, #fff5fa 58%, #fff7ec 100%);
+      box-shadow: var(--shadow-soft);
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 1fr .9fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .story blockquote {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.08;
+    }
+
+    .story p {
+      margin: 14px 0 0;
+      color: #7d675c;
+      font-size: 15px;
+    }
+
+    .steps {
+      display: grid;
+      gap: 10px;
+    }
+
+    .step {
+      border: 1px solid #ebded3;
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .idx {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #f3dfd1;
+      color: #8f6857;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+    }
+
+    .cta {
+      border-radius: var(--radius-xl);
+      border: 1px solid #e5d6ca;
+      background: var(--charcoal);
+      color: #fff;
+      padding: 26px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      box-shadow: 0 20px 45px rgba(30, 29, 32, 0.25);
+    }
+
+    .cta h3 {
+      margin: 0 0 8px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      font-weight: 600;
+    }
+
+    .cta p {
+      margin: 0;
+      color: rgba(255,255,255,.76);
+      font-size: 14px;
+    }
+
+    .cta .btn.primary {
+      background: #fff;
+      color: #1f1d20;
+    }
+
+    footer {
+      margin: 24px 0 28px;
+      text-align: center;
+      color: #8a7668;
+      font-size: 13px;
+    }
+
+    .reveal {
+      animation: rise .72s ease both;
+    }
+
+    .delay-1 { animation-delay: .08s; }
+    .delay-2 { animation-delay: .16s; }
+    .delay-3 { animation-delay: .24s; }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-visual { transform: none; }
+      .section-head { flex-direction: column; align-items: start; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .story { grid-template-columns: 1fr; }
+      .cta { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 640px) {
+      .shell { width: calc(100vw - 26px); }
+      .nav { border-radius: 16px; padding: 10px 12px; }
+      .menu { display: none; }
+      .hero { margin-top: 12px; }
+      .hero-copy p { font-size: 15px; }
+      .hero-visual { grid-template-rows: minmax(170px, 220px); }
+      .cards { grid-template-columns: 1fr; }
+      .cta h3 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="nav">
+      <div class="brand">
+        <img class="brand-mark" src="./assets/fula/logo.PNG" alt="服蜡品牌Logo" />
+        <strong class="brand-cn">服蜡</strong>
+        <span class="brand-en">FULA CANDLE</span>
+      </div>
+      <nav class="menu">
+        <a href="#collection">系列</a>
+        <a href="#story">品牌故事</a>
+        <a href="#gift">礼盒</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy reveal">
+          <h1>Warm Light, Soft Mood<span>手作蜡烛 · 温柔发光</span></h1>
+          <p>服蜡为日常留一盏安静的灯。我们以手工塑形、低饱和配色和礼物感包装，让每一支蜡烛既可爱又克制，在温馨里保持高级质感。</p>
+          <div class="actions">
+            <a class="btn primary" href="#collection">查看新品系列</a>
+            <a class="btn secondary" href="#contact">预约联名合作</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal delay-1" aria-label="品牌视觉拼贴">
+          <div class="frame">
+            <img src="./assets/fula/DSC_0853.JPG" alt="服蜡黑猫蜡烛产品图" />
+            <span class="tag">黑猫款</span>
+          </div>
+          <div class="frame">
+            <img src="./assets/fula/DSC_0847.JPG" alt="服蜡白猫蜡烛产品图" />
+            <span class="tag">白猫款</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="collection" class="reveal delay-1">
+        <div class="section-head">
+          <h2>Candle Collection</h2>
+          <p>猫咪系列以软糯轮廓、点状眼神和粉色细节形成识别符号，适合居家氛围、纪念日礼物与节庆礼盒。</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <span class="pill">Signature</span>
+            <h3>暮夜黑猫</h3>
+            <p>深色蜡体搭配蓝月眼，沉静中带一点俏皮，适合夜晚卧室与书桌角落。</p>
+            <div class="photo"><img src="./assets/fula/DSC_0853.JPG" alt="暮夜黑猫蜡烛单品图" /></div>
+          </article>
+
+          <article class="card">
+            <span class="pill">Best Seller</span>
+            <h3>奶霜白猫</h3>
+            <p>奶白色调与粉爪细节，温柔不甜腻，适配奶油风、原木风与浅色家居空间。</p>
+            <div class="photo"><img src="./assets/fula/DSC_0847.JPG" alt="奶霜白猫蜡烛单品图" /></div>
+          </article>
+
+          <article class="card">
+            <span class="pill">Gift Set</span>
+            <h3>双猫礼盒</h3>
+            <p>双主角组合加火柴瓶与配饰贴纸，开箱即成礼。适合生日、纪念日和节日赠礼。</p>
+            <div class="photo"><img src="./assets/fula/DSC_0908.JPG" alt="服蜡双猫礼盒套装图" /></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="story" class="story reveal delay-2">
+        <div>
+          <blockquote>“我们想做的，不是香氛摆件，而是一种会被记住的情绪礼物。”</blockquote>
+          <p>服蜡从猫咪的姿态里提取了“被拥抱感”的轮廓语言。每一件作品都强调手作触感、柔和光泽和可收藏属性，让可爱保持高级，不落入廉价装饰感。</p>
+        </div>
+
+        <div class="steps" aria-label="品牌制作流程">
+          <div class="step"><span class="idx">01</span><div><strong>手工塑形</strong><br />逐个修整轮廓与表情细节，确保每支都有温度。</div></div>
+          <div class="step"><span class="idx">02</span><div><strong>配色与修饰</strong><br />低饱和主色 + 点睛粉色，保持克制但有记忆点。</div></div>
+          <div class="step"><span class="idx">03</span><div><strong>礼物化包装</strong><br />盒体、贴纸、绑带统一视觉，形成完整品牌体验。</div></div>
+        </div>
+      </section>
+
+      <section id="gift" class="reveal delay-3">
+        <div class="section-head">
+          <h2>Gift Experience</h2>
+          <p>礼盒部分保留你现有“缎带 + 火柴瓶 + 圆形贴纸”的高辨识组合，只做质感升级，不改变可爱核心。</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>开箱第一眼</h3>
+            <p>封面贴纸与彩色绑带构成第一视觉锚点，建议保留大面积留白提升高级感。</p>
+            <div class="photo"><img src="./assets/fula/DSC_0909.JPG" alt="服蜡礼盒独立展示图" /></div>
+          </article>
+          <article class="card">
+            <h3>陈列组合</h3>
+            <p>黑白双猫与小配件三角构图，适合官网首屏或详情页主视觉。</p>
+            <div class="photo"><img src="./assets/fula/DSC_0850.JPG" alt="服蜡双猫同框陈列图" /></div>
+          </article>
+          <article class="card">
+            <h3>居家氛围</h3>
+            <p>可加入花材、陶瓷盘或木质托盘，强化“柔软生活方式”表达。</p>
+            <div class="photo"><img src="./assets/fula/DSC_0918.JPG" alt="服蜡家居氛围实拍图" /></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="cta reveal delay-3">
+        <div>
+          <h3>为你的空间点一盏服蜡</h3>
+          <p>品牌合作 / 渠道采购 / 定制礼盒：欢迎联系。<br />邮箱：hello@fula-candle.com</p>
+        </div>
+        <a class="btn primary" href="https://mail.google.com/mail/?view=cm&to=hello@fula-candle.com" target="_blank" rel="noopener noreferrer">发送合作邮件</a>
+      </section>
+    </main>
+
+    <footer>© 2026 FULA 服蜡 Candle Studio. All Rights Reserved.</footer>
+  </div>
+</body>
+</html>
